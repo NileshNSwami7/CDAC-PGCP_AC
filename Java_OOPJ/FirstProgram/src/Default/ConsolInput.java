@@ -16,6 +16,18 @@ public class ConsolInput {
 		
 	}
 	
+	public static double getDouble() {
+		String objeString = getString();
+		double num = Double.parseDouble(objeString);
+		return num;
+	}
+	
+	public static float getFloat() {
+		String objeString = getString();
+		float num = (Float)Float.parseFloat(objeString);
+		return num;
+	}
+	
 	public static String getString() {
 		
 		try {
