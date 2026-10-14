@@ -1,0 +1,244 @@
+show databases;
+1. Define a schema for a Library Management System with the following entities:
+   - Books
+   - Authors
+   - Members
+   - Borrow_Records
+   
+create schema Library_management_system;
+
+show databases;
+
+use Library_management_system;
+================================================================================================================================
+2. Write the SQL command to create a table Authors with the following fields:
+   - author_id (Primary Key, INT)
+   - name (VARCHAR(100))
+   - country (VARCHAR(50))
+
+Solution:
+		create table Authors 
+		(Author_id int primary key,
+		name varchar(100),
+		country varchar(50));
+================================================================================================================================
+3. Write the SQL command to create a table Books with the following fields:
+   - book_id (Primary Key, INT)
+   - title (VARCHAR(150))
+   - author_id (Foreign Key referencing Authors)
+   - published_year (YEAR)
+   - available_copies (INT)
+   
+Solution: 
+		create table Books 
+		(book_id int primary key,
+		title varchar(150),
+		author_id int,
+		published_year year,
+		available_copies int,
+		CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES Authors(author_id));
+================================================================================================================================
+4. Write the SQL command to create a table Members with:
+   - member_id (Primary Key, INT)
+   - name (VARCHAR(100))
+   - email (VARCHAR(100), unique)
+   - phone (VARCHAR(15))
+   
+Solution:
+
+		create table Member 
+		( member_id int primary key,
+		name varchar(100),
+		email varchar(100) unique,
+		phone varchar(15));
+================================================================================================================================
+5. Write the SQL command to create a table Borrow_Records with:
+   - record_id (Primary Key, INT)
+   - member_id (Foreign Key referencing Members)
+   - book_id (Foreign Key referencing Books)
+   - borrow_date (DATE)
+   - return_date (DATE)
+
+
+Sloution:
+
+		create table Boorrow_records 
+		(record_id int primary key,
+		member_id int,
+		book_id int,
+		borrow_date Date,
+		return_date date,
+		CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES Member(member_id),
+		CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES Books(book_id));
+		
+================================================================================================================================
+6. Modify the Books table to add a column genre of type VARCHAR(50).
+Solution:
+
+alter table books
+add column genre varchar(50);
+================================================================================================================================
+7. Write the SQL command to drop the Borrow_Records table.
+Solution:
+drop table Boorrow_records;
+================================================================================================================================
+8. Insert 3 records into the Authors table.
+Solution:
+
+insert into Authors(author_id,name,country)
+values(1,'Devdutt patnaik','Indian'),
+(2,'Akshat Gupta','Indian'),
+(3,'J.K Rowling','UK'),
+(4,'Paulo corlho','Brazil'),
+(5,'Robert Kiyosaki','US'),
+(6,'William Shakespear','UK'),
+(7,'Rabindranath Tagor','Indian'),
+(8,'Tarak Mehta','Indian'),
+(9,'Games Clears','US');
+================================================================================================================================
+9. Insert 5 books into the Books table.
+Solution:
+
+insert into books(book_id,title,author_id,published_year,available_copies,genre)
+values(1,'Duniyan ne unda chashma',8,1971,1000,'comics'),
+(2,'Atomic Habits',9,2018,500,'Motivation'),
+(3,'Harry Poter',3,1997,2000,'Fictional camic'),
+(4,'Jaya',1,2010,1000,'Mythological'),
+(5,'The Hidden Hindu',4,2022,1000,'Mythological'),
+(6,'The Hidden Hindu 2',4,2022,1000,'Mythological'),
+(7,'Rich Dad Poor Dad',5,1997,1000,'Personal Fianance/Bussiness'),
+(8,'Sita:An Illustrated Retelling Of The Ramayana',5,2022,1000,'Muthological');
+================================================================================================================================
+10. Insert 3 members into the Members table.
+
+insert into member(member_id,name,email,phone)
+values
+(1,'Nilesh Swami','nilnswami110@gmail.com',90282833596),
+(2,'Ram Jadhav','RamJ@Gmail.com',9023549685),
+(3,'Sakshi Raj','sr@gmail.com',9420153687),
+(4,'Laxman Prasad','Lax209@gmail.com',7754832169),
+(5,'Disha Patankar','Disha123@gmail.com',9854755142);
+================================================================================================================================
+11. Insert 4 borrow records into the Borrow_Records table.
+
+
+insert into borrow_records(record_id,member_id,book_id,borrow_date,return_date)
+values
+(1,4,3,'2022-05-31','2022-06-10'),
+(2,1,3,'2024-05-07','2024-10-09'),
+(3,1,5, '2024-04-08','2024-07-09'),
+(4,4,2,'2020-12-12','2021-10-01');
+================================================================================================================================
+12. Write an SQL query to select all books where published_year is after 2015.
+
+select * from books where published_year > 2015;
+
+ALTER TABLE borrow_records
+ADD CONSTRAINT fk_borrow_member FOREIGN KEY (member_id) REFERENCES member(member_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+ADD CONSTRAINT fk_borrow_book FOREIGN KEY (book_id) REFERENCES books(book_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+================================================================================================================================
+13. Write a SQL query to create a foreign key & primary key relationship between two tables
+Solution:
+
+create table Boorrow_records
+(record_id int primary key,
+ member_id int,
+ book_id int,
+ borrow_date Date,
+ return_date date,
+ CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES Member(member_id),
+ CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES Books(book_id));
+
+rename table Boorrow_records to Borrow_records;
+
+
+alter table books
+add constraint fk_book_author_id foreign key (author_id) references authors(author_id)
+on delete cascade
+on update cascade;
+================================================================================================================================
+
+14. Write an SQL query to find all members who have borrowed the book with title 'Database Systems'.
+
+Solution:
+
+select distinct m.member_id,m.name,m.email,m.phone
+from member m
+join borrow_records br on br.member_id = m.member_id
+join books b on b.book_id = br.book_id
+where b.title = 'The Hidden Hindu';
+================================================================================================================================
+15. Update the available_copies column of a specific book (choose any book) by reducing it by 1 after it is borrowed.
+
+Solution:
+
+update books set
+available_copies = available_copies-1
+where title = 'The Hidden Hindu';
+================================================================================================================================
+16. Delete a record from Members where member_id = 3.
+
+Solution:
+
+delete from member where member_id = 3;
+
+================================================================================================================================
+17. Update a Book name record from Book table  with id = 1.
+
+update books set title = 'The Hidden Hindu Part:2' where book_id = 6;
+================================================================================================================================
+18. Write an SQL query to list all books along with their authors' names.
+
+Solution:
+
+select b.title as books,
+    a.name as authors
+    from books b
+    join authors a on a.author_id = b.author_id;
+================================================================================================================================
+19. Write an SQL query to delete all books from the Books table where the published_year is before 2000.
+
+Solutions:
+
+delete from borrow_records where book_id in (select book_id from books where published_year < 2000);
+
+ or
+ 
+set foreign_key_checks = 0;
+delete from books where published_year < 2000;
+set foreign_key_checks = 1;
+
+or
+
+alter table borrow_records drop foreign key fk_book_id;
+
+alter table borrow_records 
+add constraint fk_book_id
+foreign_key (book_id) references books(fk_book_id)
+on delete cascade;
+
+delete from books where published_year < 2000;
+================================================================================================================================
+20. Write an SQL query to find all books that are never borrowed (i.e., no records in Borrow_Records).
+
+Solutions:
+
+select b.* 
+from books b
+left join borrow_records br on br.book_id = b.book_id
+where br.book_id is null;
+
+or
+
+select * from books where book_id NOT IN (select book_id from borrow_records);
+
+or
+
+select * from books b
+where NOT EXISTS 
+(select 1 from borrow_records br where br.book_id = b.book_id);
+================================================================================================================================
