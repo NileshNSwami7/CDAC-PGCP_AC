@@ -1,0 +1,132 @@
+1.Write a query to calculate the total salary of all employees.
+
+Solution:
+	select sum(empsalary) as total_salary from employee;
+=================================================================================================================================
+2.Write a query to find the average salary of employees in each department using GROUP BY.
+
+	solution:
+		select dept_id,avg(empsalary) as avg_salary
+		from employee 
+		group by dept_id;
+		
+		select d.dept_id,avg(e.empsalary) as avg_salary
+		from department d
+		join employee e on d.dept_id = e.emp_id;
+		GROUP BY d.dept_id,d.department;
+=================================================================================================================================
+3.Write a query to count the total number of employees in each department.
+
+Solution:
+	
+	select d.dept_id ,d.departmentname,count(e.emp_id) as number_of_employee
+	from department d
+	left join employee e on d.dept_id = e.dept_id
+	Group By d.dept_id,d.department;
+=================================================================================================================================
+4.Write a query to display departments having more than 5 employees using HAVING clause.
+
+Solution:
+	select d.dept_id,d.departmentname,count(e.emp_id) as no_of_employee
+	from department d
+	left join employee e on d.dept_id = e.dept_id
+	group by d.dept_id
+	having count(e.emp_id)>=5;
+=================================================================================================================================
+5.Write a query to list distinct department locations from the Dept table.
+
+Solution:
+	select distinct city from department;
+=================================================================================================================================
+6.Write a query to display the highest salary among all employees.
+  Write a query to display all total number of  employee in table.
+  
+  Solution:
+  
+	select max(empsalary) from employee;
+	
+	select count(*) as no_of_employee from employee;
+=================================================================================================================================
+7.Write a query to find employees whose name starts with 'A' using LIKE operator
+
+	Solution:
+	
+		select * from employee where empname like'A%';
+=================================================================================================================================
+8. Write a query to find employees whose name ends with 'n' using LIKE operator.
+
+Solution:
+	select * from employee where empname like '%n';
+=================================================================================================================================
+9. Write a query to find employees whose name contains 'ra' using LIKE operator.
+
+Solution:
+	select * from employee where empname like '%ra%';
+=================================================================================================================================
+10. Write a query to display all employees sorted by their Salary in descending order.
+
+Solution:
+	
+	select * from employee ORDER BY empsalary desc;
+=================================================================================================================================
+11. Write a query to display all employees sorted by DeptID ascending and then Salary descending.
+
+	Solution:
+	 select * from employee order by dept_id asc, emp_id desc;
+=================================================================================================================================
+12. Write a query to find employees whose salary is between 30,000 and 60,000.
+
+Solution: 
+	select * from employee where empsalary between 30000 and 60000;
+=================================================================================================================================
+13. Write a query to display all employees whose DeptID is in (10, 20, 30).
+
+Solution:
+  select * from employee where depid in (10,20,30);
+=================================================================================================================================
+14. Write a query to display Min salary of employee .
+
+Solution:
+	
+	select min(empsalary)as min_salary from employee;
+=================================================================================================================================
+15.Write a query to display employees whose JoiningDate is between '2020-01-01' and '2021-12-31'.
+
+Solution:
+    Select * from employee where joining_date between '2020-01-01' and '2021-12-31';
+=================================================================================================================================
+16. Write a query to display employees whose Salary is NULL.
+
+Solution:
+   Select * from employee where empsalary is null;
+=================================================================================================================================
+17. Write a query to display employees whose Salary is NOT NULL.
+
+Solution:
+	
+	select * from employee where empsalary is not null;
+=================================================================================================================================
+18. Write a query to calculate the total salary per department, 
+but only for departments where total salary is greater than 1,00,000 (use HAVING).
+
+Solution:
+    select d.dept_id,d.departmentname,sum(e.empsalary) as total_salary
+	from department d
+	join employee e on d.dept_id = e.dept_id
+	group by d.dept_id,d.departmentname
+	having sum(e.empsalary) > 100000;
+=================================================================================================================================
+19. Write a query to display all distinct employee names.
+Solution:
+	select distinct empname from employee;
+=================================================================================================================================
+20. Write a query to count the number of departments having the same location.
+
+Solution:
+  
+	select city, count(*) as no_of_city
+	from department d
+	GROUP BY city
+	having count(*)>1;
+=================================================================================================================================
+=================================================================================================================================

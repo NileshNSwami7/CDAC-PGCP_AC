@@ -1,0 +1,195 @@
+1. Write a SQL query to create Employee & Department table with specific columns and constraints.
+(Note- Create Table, insert data as per your Choice)
+
+Solution:
+
+Employee table:
+
+	create table employee
+    (emp_id int primary key,
+    empname varchar(20) not null,
+    empage int ,
+    empsalary decimal(10,2),
+    empphone bigint,
+    dept_id int,
+    CONSTRAINT fk_dept_id FOREIGN KEY (dept_id) REFERENCES department(dept_id));
+	
+Department table:
+
+	create table department
+    (dept_id int primary key,
+    dept_name varchar(20) not null unique,
+    city varchar(20));
+	
+=================================================================================================================================
+2. Write a SQL query to add any new column to an existing table.
+
+Solution:
+	alter table employee add column empemail varchar(20) UNIQUE;
+=================================================================================================================================
+3. Write a SQL query to insert multiple records (At least 5) into a table in a single operation.
+
+Solution:
+
+	insert into employee (emp_id,empname,empage,empsalary,empphone,dept_id,empemail)
+    values(1,'Vishal Bhadwaj',35,45000,8475828488,1,'vish@gmail.com'),
+    (2,'Rakesh Shetty',30,30000,8975636683,2,'Rock@gmail.com'),
+    (3,'Bagheshwar Udhaiwala',28,30000,8848493942,2,'Bagh@gmail.com'),
+	(4,'krishanan Iyer',32,50000,9087885634,2,'Krish@gmail.com'),
+    (5,'Sudar shah',30,25000,9899897888,3,'Sundar@gmail.com'),
+	(6,'Champak Seth',55,89000,9899867888,4,'Cham@gmail.com');
+	
+	inert into department(dept_id,dept_name,city)
+		values(1,'HR','Mumbai'),
+		(2,'Enigneer','Pune'),
+		(3,'Sales Executive','Chemai'),
+		(4,'Business Analysist','Banglurur');
+=================================================================================================================================
+4.Write a SQL query to delete all records from a table.
+
+Solution:
+	
+	delete From employee;
+=================================================================================================================================
+5.Write a SQL query to update salary records from a table where id = 5.
+
+Solution:
+	
+	update employee set empsalary = 35000 where emp_id = 5;
+=================================================================================================================================
+6.Write a query to grant SELECT privilege on the Emp table to user readonly_user.
+
+Solution:
+	Grant select on Employee to 'Employee_management'@'localhost';
+=================================================================================================================================
+7.Write a query to revoke INSERT privilege on the Emp table from user temp_user
+
+Solution:
+	
+	 REVOKE insert on Employee from 'Employee_management'@localhost;
+=================================================================================================================================
+8. Write a query to insert a new employee into the Emp table and commit the transaction.
+
+Solution:
+
+	Start transaction;
+	
+	insert into employee(emp_id,empname,empage,empsalary,empphone,empemail)
+		values(7,'Ashish Raj',29,30000,9085634223,'Ashis@gmail.com');
+		
+	Commit;
+	
+=================================================================================================================================
+9. Write a query to update the Salary of an employee with EmpID = 101 and commit the transaction.
+
+Solution:
+
+	start transaction;
+	update employee set empsalary = 33000 where emp_id = 3;
+	commit;
+	
+=================================================================================================================================
+10. Write a query to set a SAVEPOINT before updating the DeptID of an employee
+
+Solution:
+	
+	start transaction;
+	
+	savepoint before_dept_update;
+	
+	update employee
+	set dept_id = 2,
+	where emp_id = 1;
+	
+================================================================================================================================
+11.Write a query to rollback to the previously created SAVEPOINT.
+
+Solution:
+	
+	start transaction;
+	
+	update employee set empsalary = 35000 where emp_id = 2;
+	
+	savepoint before_update_salary;
+	
+	update employee set empsalary = 40000 where emp_id = 2;
+
+	rollback to before_update_salary;
+================================================================================================================================
+12.Write a query to truncate all data from the Emp table.
+
+Solution:
+
+	truncate table employee;
+================================================================================================================================
+13.Write a query to list all employees whose salary is greater than 50,000.
+
+Solution:
+ select * from Employee where empsalary >= 50000;
+================================================================================================================================
+14.Write a query to increase the salary of all employees in DeptID = 10 by 10%.
+
+solution:
+	update employee set empsalary = empsalary * 1.10 where dept_id = 2;
+================================================================================================================================
+15.Write a query to count the total number of employees in each department.
+
+Solution:
+
+	SELECT d.dept_name,count(e.emp_id) As total_employee
+	from Department d
+	Left Join Employee e ON d.dept_id = e.dept_id
+	GROUP BY d.dept_id,d.dept_name;
+================================================================================================================================
+16.Write a query to list departments that have no employees. & 
+create a view for those salespeople who belong to the city of Mumbai. 
+
+Solution :
+	
+	select d.dpt_id,d.dept_name,d.city
+	from department d
+	left join Employee e ON d.dept_id = e.emp_id
+	where e.dept_id IS null;
+	
+	Create view Membai_salespeople As
+	select * from Department
+	where city = 'Chennai';
+================================================================================================================================
+17.Write a query to display the highest salary among all employees.
+
+Solution:
+	
+	select * from emp_id,
+	empname,empage,Max(empsalary),
+	dept_id,empemail 
+	from Employee;
+================================================================================================================================
+18.Write a query to display the 2nd highest salary among all employees.
+
+Solution:	
+	Select distinct empsalary
+	from employee
+	order by empsalary desc
+	limit 1 offset 1;
+	
+	select max(empsalary) from employee
+	where empsalary < (select max(empsalary) from employee);
+	
+	select empsalary
+	from ( 
+		select empsalary,dense_rank() over (order by empsalary desc) as rank from employee)
+		ranked_employee
+		where rank = 2;
+================================================================================================================================
+19.Write a query to show all employees ordered by JoiningDate in descending order.
+
+Solution:
+	select * from employee order by joining_date desc;
+================================================================================================================================
+20.Write a query to rename the DeptName column to DepartmentName.
+
+Solution:
+	
+	ALTER TABLE department 
+RENAME COLUMN dept_name TO departmentname;
+================================================================================================================================

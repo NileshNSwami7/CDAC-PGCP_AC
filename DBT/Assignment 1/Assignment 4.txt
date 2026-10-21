@@ -1,0 +1,84 @@
+1.	Write a Relational Algebra expression to perform Cartesian Product (Cross Join) between Emp and Dept tables.
+
+Solution:
+    
+	 select d.dept_id,d.departmentname,d,city
+	 from department d
+	 cross join employee;
+================================================================================================================================
+2.Write a SQL query to perform an INNER JOIN between Emp and Dept tables displaying EmpName and DeptName.
+
+Solution: 	select d.dept_id,d.departmentname,d.city
+			from department d 
+			inner join employee e on d.dept_id = e.dept_id;
+================================================================================================================================
+3.	Write a SQL query to perform a LEFT OUTER JOIN between Emp and Dept 
+tables to display all employees along with their department information,including employees without a department.
+
+Solution:
+  select e.emp_id,e.empname,e.empsalary,e.empphone,e.empage,d.dept_id,d.department,d.city
+  from department d 
+  left join employee e on d.dept_id = e.dept_id;
+================================================================================================================================
+
+4.	Write a SQL query to perform a RIGHT OUTER JOIN between Emp and Dept tables.
+
+Solution:
+  
+   select e.emp_id,e.empname,e.empsalary,e.empphone,e.empage,d.dept_id,d.departmentname,d.city
+   from department d 
+   right join employee e on d.dept_id = e.dept_id;
+================================================================================================================================
+5.	Write a SQL query to perform a NATURAL JOIN between Emp and Dept.
+Solution:
+ 
+  select * from employee natural join department;
+================================================================================================================================
+6.	Write a SQL query to perform a CROSS JOIN between Emp and Project table
+
+Solution:
+	
+	select p.projectid,p.projectname,p.budget
+	from projects p 
+	cross join employee e on e.projectid = p.projectid;
+================================================================================================================================
+7.	Write a SQL query to create a new table EmpBackup with the same structure as Emp but no data.
+
+solution:
+   
+   create table emp_back like employee;
+================================================================================================================================
+8.	Write a SQL query to copy all data from Emp into EmpBackup table.
+
+Solution:
+   
+   insert into emp_backup
+   select * from employee;
+================================================================================================================================
+10.	Write a SQL query to create an AUTO_INCREMENT sequence for EmpID in the Emp table during table creation.
+
+solution:
+  
+  create table employee ( empi_id int primary key auto increment,
+  empname varchar(255),
+  empage int,empslalary decimal(15,2),
+  empphone bigint,
+  empemial varchar(255));
+================================================================================================================================
+11.	Write a SQL query using a subquery to find all employees whose salary is greater than the average salary of all employees.
+
+Solution: 
+
+   select emp_id,empname,empsalary,empage
+   from employee e 
+   where empslalary > (select avg(salary) from employee);
+================================================================================================================================
+12. 
+12.	Write a SQL query using a subquery in WHERE clause to find employees working in departments located in 'Mumbai'.
+
+solution: 
+  
+   select emp_id,empname,empphone,empemial,empsalary
+   from employee where dept_id
+   IN(select deptId from department where city = 'Mumbai'; 
+================================================================================================================================
