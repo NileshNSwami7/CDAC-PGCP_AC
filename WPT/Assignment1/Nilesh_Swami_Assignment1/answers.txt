@@ -1,0 +1,187 @@
+1) A user opens your portfolio from a link. Describe step by step what happens between the browser and the server, 
+and draw a simple client–server diagram (hand-drawn and photographed is fine). Say where the app logic and the database sit.
+
+Ans: 
+
+Client_server architecutre follows the request and response cycle.
+Through out this cycle client send the request with the help of web browsers to the servers.
+The web browsers pages are made up of with the using of HTML and CSS and for validation part we use JavaScripts(JS).
+So basically client renders the final user interface using HTML,CSS and native app.
+The client start the communication session by sending the request over the network.
+The transmission travel the protocol like TCP/IP and HTTP.
+Whenever the request is reaching to the server the server will check the permissions and execute the bussiness logic and queries if the databses is needed.
+The serve send the response conde and payload back to the client.
+The client recieves the response and update the screen for the users.
+
+2) Your contact form sends a visitor's message to a server. Should it use GET or POST, and why? What happens if method is left out?
+ Name the status code the server returns on success and the family of codes that means the server failed.
+
+Ans:
+
+HTTP is a Hypertext Transfer Protocol use the send the send and to recieves the status code form the server side if the 
+request is succefull or failed.
+There are basicall 5 methods are use in to send the request to server like GET POST PUT DELETE and PATCH.
+GET : When you want to get information or fetch the data from the server we use GET.
+POST : To send and save the data on server we use post.
+PUT : For update the data.if the the data is available on the server it will update the data.
+PATCH : It will update the perticular or update the identical data with the help of the that pertcular id.or it will do partially
+modification. 
+DELETE : it will user delete the data from server.
+
+Http also respsresnts the staus code like.
+1xx Informational Response(100-199):
+100 continue: Server recieves the request headers na d cilent sends the response body.
+
+2xx Successfull response(200-299):
+200 : OK .  standerd response for requesting Like GET or PUT.
+201 : Created . Get response code when to create or add data to the server.
+
+3xx Redirectional message(300-399):
+301 : Moved permenetly
+302 : Found
+304 : Not Modified
+
+4xx Client error response(400-499):
+
+400 : Bad request . It will response code like bad request when the the client side syntax error od data inavlid.
+401 : Unauthorized : Authentication is required and has failed or if it has not been provided.
+403 : Forbidden : server understand the request but refuse to authorized it.
+404 : Not Found : The server is not be able to find the request resource or page.
+
+5xx Server error responses(500-599):
+500 : Internal server error : Th error is genrate an unexpected condintion.
+501 : Bad Gateway : An invalid response is recieved by an intermediate server from th upstream server.
+503 : Service unavalible : The response code is getting when the server is down or it is in under the maintenence.
+504 : Time out : When the server is proceesing longer time to load the request. 
+
+Name the three types of CSS and say where each is written. If all three colour the same paragraph differently, which wins?
+Which type would you use for a style shared by four pages, and why?
+
+Ans: 
+There are thre type of css. which are mention below:
+
+A. Inline CSS :  Inline css is directly written inside the HTML element using style attributes.
+B. Internal(Embedded) CSS : The css code is written inside the <style> tag which is placed in between the <head>
+ section of HTML element.
+C. External CSS : Wriiten code in separate standalone file having .css extension and haing link to the HTML document inside<head>
+unde the <link> tag.
+
+If there are three colours are inside the same paragraph the inline css colour win the race because inline css has
+the highest priority than the other css.
+
+But best type for multiple pages you sould always use the external css.
+Because the external css follow the Do not repeat yourself principle(DRY).You just need to write the code foe once in the single file 
+for four pages and whenever you wan to change some ting or any cour for anu page you do not need to change the the each page code 
+you jusy need to change the single ling on the single page of code.   
+
+4) A page has <p id="intro" class="note">Hello</p>. Rules exist for *, p, .note and #intro, 
+each with a different color. Which applies, and what is the full order of precedence from strongest to weakest?
+
+Ans:
+
+The rule for #intro wins 
+No matter now many low values are an Id selctor is always beats all other attributes because it worth most.
+
+If we talk about the precedence of these selectors 
+1. # ID selector has strongest 
+2. .class selector on second
+3. p element selctor
+4. * universal selector has lowest priority.
+
+5) Explain padding and margin with a small drawing of a <div> showing content, padding, border and margin.
+ What does box-sizing: border-box change?
+
+Ans:
+let consider the one one the wall and remain in concept as describe below.
+Content : Actual pricture inside the frame.
+Padding : White mat board inside the frame sitting between the picture and the wooden frame.
+Border : The wooden frame itself around the padding and content.
+Marging: The empty space around the frame that separate the frame and other spaces frome other pictures on the wall.
+
+box-sizing : border-box 
+
+With content-box by default browser will calculate the total render width as 300px + 40px left/right padding + 10px left/right 
+border = 350px in that same case your box has increase the size that you want to as 300px eventually it will breaks the layout grid.
+on other hand the border-box is automatically adjust the size it will render width remain excatly 300px it will automatically shrink the size of
+inner content areadwon to 250px to make room for the padding and bordersinside the box.
+
+6) Where does JavaScript code run, and what is the JS engine in a browser? Why is no compiler needed to run JavaScript? 
+Name two things JavaScript can do on a web page that HTML and CSS alone cannot.
+
+Ans:
+
+JavaScript code run inside the runtime enviornment which provide the neccessary component and api to execute the code.
+
+Client-side It primerly run directly inside the browsers.like chrome Safari,Micrsoft edge.
+
+Server-side it can also run on the conputer and server side with help of Node.js and deno.
+
+The javascript engine is a specialized the program built into the web browser that read,interpret and executes the javascript 
+code.It will transelate the human readable code into machine readable code that can machine processor understand.
+
+There is no need of compiler to run the javascript programme beacause it have Just in time compiler whihc is also know 
+as JIT compililation which automatically happen insde the browser's engine at the runtime.
+
+Two things which JS can do which HTML and CSS cant do.
+1.Dynamic Data Fetching(Ajx/fetch): Javascript the load new data or content from as server in the background and update the page without
+require the full page refresh.
+
+2.Complex event handling & logic: Js can listen specif user actions - like typing ,double clicking or dragging an item and excuting
+complex programming logic,calculation or data validation on the spot.
+
+7) JavaScript has no type safety. Explain what happens when you write a = 5; and then a = "hello";.
+ Name the three data types you have learned so far.
+
+ Ans:
+
+ Javascript is not strictly type language meaning hwateven the value assingn the varibale it will accept the value means
+ it will create space and store the value insde the menory but whne the at the same wimt if you will replace the value with sam each 
+ varible it will accpet and override the value wiht new value.
+
+ when you have a varibale like a=5 it will store inside the memory as number.it will treated as Number type.
+whne a = "hello" it will dynamically chnage type with string an dreplace number with string it sote the value as a string.
+
+so on this basis we can conclude that the javascript is not strictly type language like Typescript or Java.
+
+8) Explain the four values of the CSS position property (static, relative, absolute, fixed). When would you use top, left, right and bottom?
+
+Ans:
+
+static : Elements stack on the top of or next to eash other normally. The element follows the natural layout of flow of the page.
+
+relative : The element is positioned relative to its original,normal position. The elemnt can meove the white space is to be 
+
+absolute : The position relative to its nearest non-static parent content.othe r elemnts behave if this element dow not exist.
+
+fixed : The element is positioned relative to the browser screen .it is always locke even whne the user scroll the page.
+
+When to used left, right, top and bottom:
+
+- You can use this offset precisely shift or lock the element into place .
+- You can not use this offest with the positon is static but can use with the rest of position like absolute,relative and fixed
+
+With position : absolute :- use wiht the parent container for e.g: bottom: 0; right:0; glue the lemnt at bottom right corner of its parent
+with position : relative :- use with away from its original spot
+with position : fixed : They lock the element on the screen.
+
+9) A container has display: flex and three boxes with flex values of 1, 2 and 1.
+ How is the width shared between the boxes? What do gap and justify-content: center do?
+
+ Ans:
+  
+Whne container uses display:flex  the availabl width shape by its flex shortend values.
+
+for the flex values 1,2 and 1 the conatiner calculate the total numbe rof parts which are 1+2+1 = 4 th width as splited as below
+
+for flex 1 gets 25% (1/4)
+for flex 2 gets 50% (2/4)
+for frlx 3 gets 25% (1/4)
+
+What gap and justify-content: center Do
+
+gap : set the spefic fixed space or gutter between the item  for e.g :gap:20px  forces 20px gap bwetween two box 2 and 3 and another 
+20px gap applied ob box 2 and box 3.
+
+justify-content:center: Aling the the at the exact center of the parent container.
+This only has a visible effect if the total combined width of your boxes is smaller than the total width of the container,
+leaving empty "dead space" on both the far-left and far-right sides.
