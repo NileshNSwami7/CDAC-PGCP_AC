@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <title>TechNova Solution - Onboarding Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="login-page">
+    <div class="top-nav">
+      <div class="brand-logo">TechNova HR</div>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="onboarding.html">Onboarding</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <h1 class="page-title">New Joiner Joining Form</h1>
+      <div class="form-card">
+        <form action="#" method="POST" enctype="multipart/form-data">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="offemail">Email</label>
+              <input
+                type="email"
+                id="offemail"
+                name="offemail"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="tempPassword">Password</label>
+              <input
+                type="password"
+                id="tempPassword"
+                name="tempPassword"
+                placeholder="Enter your Password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" />
+            </div>
+            <div class="form-group">
+              <label for="joiningDate">Joining Date</label>
+              <input type="date" id="joiningDate" name="joiningDate" />
+            </div>
+            <div class="form-group">
+              <label for="reportTime">Reporting time on day one</label>
+              <input type="time" id="reportTime" name="reportTime" />
+            </div>
+            <div class="form-group">
+              <label>Gender:</label>
+              <div class="radio-group">
+                <label
+                  ><input
+                    type="radio"
+                    id="genderMale"
+                    name="gender"
+                    value="male"
+                  />
+                  Male</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="genderFemale"
+                    name="gender"
+                    value="female"
+                  />
+                  Female</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    id="genderOther"
+                    name="gender"
+                    value="other"
+                  />
+                  Other</label
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="qualification">Highest Qualification</label>
+              <select name="qualification" id="qualification">
+                <option value="" disabled selected>Select Qualification</option>
+                <option value="bachelors">Bachelor's Degree</option>
+                <option value="masters">Master's Degree</option>
+                <option value="doctorate">Doctorate (Ph.D)</option>
+                <option value="diploma">Diploma</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="department">Department:</label>
+              <select name="department" id="department">
+                <option value="" disabled selected>Select Department</option>
+                <option value="engineering">Software Engineer</option>
+                <option value="hr">Human Resources</option>
+                <option value="qa">Quality Analysis</option>
+                <option value="product">Product Management</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="currentAddress">Current Address</label>
+              <textarea
+                id="currentAddress"
+                name="currentAddress"
+                rows="3"
+                placeholder="Type your Address here"
+              ></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label for="documentUpload">Passport Photo or Resume</label>
+              <input
+                type="file"
+                id="documentUpload"
+                name="documentUpload"
+                accept=".pdf,.jpeg,.jpg,.png"
+              />
+            </div>
+            <div class="form-group full-width checkbox-group">
+              <input
+                type="checkbox"
+                id="declaration"
+                name="declaration"
+                required
+              />
+              <label for="declaration"
+                >I hereby declare that all information provided is accurate and
+                true.</label
+              >
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Submit Details</button>
+            <button type="reset" class="btn-secondary">Reset Form</button>
+          </div>
+        </form>
+      </div>
+      <div class="map-section">
+        <h2 style="margin-bottom: 15px; font-size: 1.2rem; color: #0f172a">
+          TechNova Office Location
+        </h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0470519391!2d73.78056525!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1f1024!2f768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </body>
+</html>
