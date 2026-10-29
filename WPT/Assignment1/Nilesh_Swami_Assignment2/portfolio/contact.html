@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <title>Nilesh Portfolio Assignment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="Nil_Profile.jpg" alt="logo" />
+        <span>Nilesh N.Swami</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="home">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="https://github.com/NileshNSwami7" class="github">Github</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>Get in touch</h2>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="fullName">Name:</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="emailAddress">Email:</label>
+          <input
+            type="email"
+            id="emailAddress"
+            name="emailAddress"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contactDate">
+            <input type="date" id="contactDate" name="contactDate" required />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="enquiryType">
+            <select name="enquiryType" id="enquiryType">
+              <option value="" disabled selected>Select an option</option>
+              <option value="job">Job Opportunity</option>
+              <option value="freelance">Freelance Project</option>
+              <option value="general">General Question</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Preferred Contact Mode</label>
+          <div class="radio-group">
+            <label
+              ><input
+                type="radio"
+                id="modeemail"
+                name="contactmode"
+                value="email"
+                checked
+              />Email</label
+            >
+            <label
+              ><input
+                type="radio"
+                id="modephone"
+                name="contactmode"
+                value="phone"
+              />Phone call</label
+            >
+            <label
+              ><input
+                type="radio"
+                id="modevideo"
+                name="contactmode"
+                value="video"
+              />Video call</label
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="messageBox">Message:</label>
+          <textarea
+            name="messageBox"
+            id="messageBox"
+            row="5"
+            placeholder="Type your message here"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="cvUpload">CV Upload(pdf)</label>
+          <input type="file" id="cvUpload" name="cvUpload" accept=".pdf" />
+        </div>
+        <div class="form-group checkbox-group">
+          <input
+            type="checkbox"
+            name="consentCheck"
+            id="consentCheck"
+            required
+          />
+          <label for="consentCheck"
+            >I consent to having this data processed for the purpose of this
+            inquiry.</label
+          >
+        </div>
+        <div class="form-button">
+          <button type="submit" class="btn">Submit</button>
+          <button type="reset" class="btn">Reset Form</button>
+        </div>
+      </form>
+      <div class="map-container">
+        <h2>Location</h2>
+        <p style="margin-bottom: 15px; color: #555">
+          Based in Pune, Maharashtra
+        </p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0470519391!2d73.78056525!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1f1024!2f768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%26%26%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </body>
+</html>
