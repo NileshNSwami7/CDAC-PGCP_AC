@@ -1,0 +1,187 @@
+/* 
+   ==========================================================================
+   CSS SPECIFICITY & PRECEDENCE ORDER (Strongest to Weakest):
+   1. Inline Styles (e.g., style="...") -> [1, 0, 0, 0] (Strongest)
+   2. ID Selectors (e.g., #banner) -> [0, 1, 0, 0]
+   3. Class Selectors & Pseudo-classes (e.g., .card, :hover) -> [0, 0, 1, 0]
+   4. Tag/Element Selectors (e.g., h1, p, div) -> [0, 0, 0, 1]
+   5. Universal Selector (e.g., *) -> [0, 0, 0, 0] (Weakest)
+   ==========================================================================
+*/
+
+/* --- 1. UNIVERSAL SELECTOR (*) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- 2. TAG SELECTORS --- */
+body {
+    /* Color Type 1: Color Name */
+    background-color: black;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding-bottom: 80px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* --- 3. ID SELECTOR --- */
+#banner {
+    width: 100%;
+    height: 320px;
+    /* Background using linear-gradient + background image */
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #f59e0b;
+}
+
+/* --- CONTAINER FOR PAGE CONTENT --- */
+.container {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- HIGHLIGHT CLASS --- */
+.highlight {
+    /* Color Type 2: Hexadecimal Value */
+    color: #f59e0b;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* --- CLASS SELECTOR SHARED BY CARDS & INFO SECTION --- */
+.card-theme {
+    /* Color Type 3: rgb() */
+    background-color: rgb(30, 27, 75);
+    color: #f3f4f6;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #6d28d9;
+    border-radius: 12px;
+    transition: background-color 0.4s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-theme:hover {
+    background-color: rgb(46, 16, 101);
+    border-color: #f59e0b;
+    transform: translateY(-5px);
+}
+
+/* --- FLEXBOX LAYOUT FOR SERVICE CARDS --- */
+.service-card {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0 50px 0;
+}
+
+/* Individual Card Box Model Specs */
+.card {
+    flex: 1;
+    width: 300px;
+    min-height: 320px;
+    box-sizing: border-box;
+    
+    /* 
+       SPACING:
+       - PADDING (25px): Inside the border, keeps content from touching the edges.
+       - MARGIN (10px): Outside the border, adds external space around each box.
+    */
+    padding: 25px;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+/* Featured Card (Larger Flex Grow Ratio) */
+.card.featured {
+    flex: 1.4; /* Takes up more width in the flex row */
+    border-color: #f59e0b;
+    background: linear-gradient(145deg, rgb(46, 16, 101) 0%, rgb(88, 28, 135) 100%);
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #ddd6fe;
+}
+
+.card .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f59e0b;
+    margin-top: 15px;
+}
+
+/* --- LISTS & INFO SECTION --- */
+.info-section {
+    margin-bottom: 40px;
+    padding: 30px;
+}
+
+ol, ul {
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* --- FIXED POSITION HOVER BUTTON --- */
+.fixed-order-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.fixed-order-btn:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    transform: scale(1.08);
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
+}
